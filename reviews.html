@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Стрінка з відгуками</title>
+    <style>
+        /* Загальні стилі */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Стилі для хедеру */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header ul li {
+            margin-right: 20px;
+        }
+
+        header ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+            transition: all 0.3s ease;
+        }
+
+        header ul li a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Зміст сторінки */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* Стилі для відгуків */
+        .reviews {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .review {
+            width: 60%;
+            background-color: #000;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            color: #fff;
+            margin: 0 auto;
+        }
+
+        .review h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .review p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        #reviewForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #reviewForm input,
+        #reviewForm textarea {
+            width: 80%;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        #reviewForm button {
+            width: 40%;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #reviewForm button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Стилі для футера */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 5px 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="banking.html">Інтернет банкінг - що це?</a></li>
+            <li><a href="robota.html">Робота IT у банкінгу</a></li>
+            <li><a href="cyber.html">Кібербезпека</a></li>
+            <li><a href="banks.html">Інтернет-банки України</a></li>
+            <li><a href="reviews.html">Відгуки</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <h1>Відгуки нашого сайту</h1>
+        <div class="reviews">
+            <!-- Відгуки користувачів -->
+            <div class="review">
+                <h2>Ім'я користувача</h2>
+                <p>Текст відгуку...</p>
+            </div>
+            <!-- Форма для нових відгуків -->
+            <form id="reviewForm">
+                <input type="text" id="username" placeholder="Ваше ім'я" required>
+                <textarea id="userReview" placeholder="Ваш відгук" required></textarea>
+                <button type="submit">Додати відгук</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            Контакти<br>
+            Gmail : vladblagui20006@gmail.com <br>
+            Telegram : @crvvsq <br>
+            Instagram : <a href="https://www.instagram.com/vlad1sslaw/">vlad1sslaw</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById("reviewForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var username = document.getElementById("username").value;
+            var userReview = document.getElementById("userReview").value;
+
+            var reviewContainer = document.querySelector(".reviews");
+            var newReview = document.createElement("div");
+            newReview.classList.add("review");
+            newReview.innerHTML = "<h2>" + username + "</h2><p>" + userReview + "</p>";
+
+            reviewContainer.insertBefore(newReview, reviewContainer.childNodes[0]);
+
+            document.getElementById("username").value = "";
+            document.getElementById("userReview").value = "";
+        });
+    </script>
+
+</body>
+</html>
